@@ -1,81 +1,87 @@
 <div align="center">
 
-🛡️ AI SOC Commander
+# 🛡️ AI SOC Commander
 
-Secure Multi-Agent Cybersecurity Incident Response System
+### Secure Multi-Agent Cybersecurity Incident Response System
 
-Capstone Project — Advanced Agentic AI Systems Engineering
+**Capstone Project – Advanced Agentic AI Systems Engineering**
 
-Python
-LangGraph
-FastAPI
-Docker
-SQLite
-Google Colab
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-success?style=flat-square)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite)
+![Google Colab](https://img.shields.io/badge/Google-Colab-F9AB00?style=flat-square&logo=googlecolab)
 
-Enterprise-style Multi-Agent SOC workflow built with LangGraph, FastAPI, SQLite, Docker, and Google Colab.
+Enterprise-grade multi-agent cybersecurity incident response system built with **LangGraph**, **FastAPI**, **SQLite**, **Docker**, and **Google Colab**.
 
 </div>
 
-────────
+---
 
-📑 Table of Contents
+# 📋 Project Information
 
-• About
-• Key Features
-• Architecture
-• Multi-Agent Workflow
-• Agent Responsibilities
-• Technologies
-• Repository Structure
-• Google Colab Demo
-• Local Setup
-• API Example
-• Security Features
-• Human-in-the-Loop
-• Observability
-• Team
-• Acknowledgment
+| Item | Details |
+|------|---------|
+| **Project** | AI SOC Commander |
+| **Program** | Advanced Agentic AI Systems Engineering |
+| **Organization** | SDAIA Academy |
+| **Trainer** | Eng. Mohammed Albeladi |
+| **Architecture** | LangGraph Multi-Agent Workflow |
+| **Deployment** | FastAPI + Docker |
+| **Persistence** | SQLite Checkpoints |
+| **Notebook** | Google Colab |
 
-────────
+---
 
-🚀 About
+# 📑 Table of Contents
 
-AI SOC Commander is a secure enterprise-style multi-agent cybersecurity incident response system developed as the Capstone Project for the Advanced Agentic AI Systems Engineering program.
+- About
+- Key Features
+- System Architecture
+- Multi-Agent Workflow
+- Agent Responsibilities
+- Technologies
+- Repository Structure
+- Installation
+- Google Colab Demo
+- API Example
+- Security Features
+- Human-in-the-Loop
+- Observability
+- Team
+- Acknowledgment
 
-The workflow analyzes incidents, evaluates risk, retrieves organizational security policies, generates response plans, applies security guardrails, requests human approval for sensitive actions, and produces an auditable security report.
+---
 
-Program: Advanced Agentic AI Systems Engineering
+# 🚀 About
 
-Delivered by: SDAIA Academy
+AI SOC Commander is a secure enterprise-style multi-agent cybersecurity incident response system developed as the Capstone Project for the **Advanced Agentic AI Systems Engineering** program.
 
-Trainer: Eng. Mohammed Albladi
+The system receives cybersecurity incident reports, analyzes threats, evaluates risk levels, retrieves organizational security policies, generates response plans, validates actions using security guardrails, pauses for human approval when required, and produces an auditable incident report.
 
-SDAIA Academy GitHub:
-https://github.com/SDAIAAcademy
+---
 
-────────
+# ✨ Key Features
 
-✨ Key Features
+- Multi-Agent Architecture
+- LangGraph StateGraph Orchestration
+- Shared Agent State
+- Conditional Routing
+- Reviewer Feedback Loop
+- Human-in-the-Loop Approval
+- SQLite Checkpoint Persistence
+- Prompt Injection Protection
+- PII Masking
+- Output Validation
+- Structured JSON Logging
+- FastAPI REST API
+- Docker Deployment
+- Google Colab Notebook
 
-• LangGraph StateGraph orchestration
-• Multi-Agent architecture
-• Shared workflow state
-• Conditional routing
-• Reviewer retry loop
-• Human-in-the-loop approval
-• SQLite checkpoint persistence
-• Prompt Injection protection
-• PII masking
-• Output validation
-• JSONL audit logs
-• FastAPI REST API
-• Docker deployment
-• Google Colab notebook
+---
 
-────────
-
-🏗️ Architecture
+# 🏗️ System Architecture
 
 ```text
 User
@@ -100,147 +106,146 @@ Response Planner
  │
  ▼
 Security Reviewer
- ├──── Revision Required ───► Planner
  │
- ▼
-Human Approval
- │
- ▼
-Final Report
+ ├── Revision Required ───────────┐
+ ▼                                │
+Human Approval                    │
+ │                                │
+ ▼                                │
+Final Report ◄────────────────────┘
  │
  ▼
 Audit Logs
 ```
 
-────────
+---
 
-🤖 Multi-Agent Workflow
+# 🤖 Multi-Agent Workflow
 
-• Input Guardrail
-• Coordinator
-• Threat Analyzer
-• Risk Assessment
-• Policy Agent
-• Response Planner
-• Security Reviewer
-• Human Approval
-• Final Report
+| Agent | Responsibility |
+|------|----------------|
+| Input Guardrail | Detects prompt injection and malicious input |
+| Coordinator | Controls workflow execution |
+| Threat Analyzer | Analyzes cybersecurity incidents |
+| Risk Assessment | Determines severity level |
+| Policy Agent | Retrieves security policies |
+| Response Planner | Builds mitigation strategy |
+| Security Reviewer | Reviews response quality |
+| Human Approval | Approves sensitive actions |
+| Final Report | Produces the final report |
 
-────────
+---
 
-👨‍💻 Agent Responsibilities
+# 🛠️ Technologies
 
-|Agent            |Responsibility                |
-|-----------------|------------------------------|
-|Input Guardrail  |Blocks malicious prompts      |
-|Coordinator      |Manages workflow              |
-|Threat Analyzer  |Parses security incidents     |
-|Risk Assessment  |Calculates severity           |
-|Policy Agent     |Retrieves security policies   |
-|Response Planner |Creates response plan         |
-|Security Reviewer|Reviews and requests revisions|
-|Human Approval   |Approves sensitive actions    |
-|Final Report     |Generates incident report     |
+- Python
+- LangGraph
+- FastAPI
+- SQLite
+- Docker
+- Google Colab
 
-────────
+---
 
-🛠️ Technologies
-
-• Python
-• LangGraph
-• FastAPI
-• SQLite
-• Docker
-• Google Colab
-
-────────
-
-📁 Repository Structure
+# 📁 Repository Structure
 
 ```text
 AI_SOC_Commander/
+│
 ├── AI_SOC_Commander_Colab.ipynb
 ├── README.md
 ├── app.py
+├── requirements.txt
 ├── Dockerfile
 ├── docker-compose.yml
-├── requirements.txt
 ├── src/
-├── docs/
 ├── data/
+├── docs/
 └── tests/
 ```
 
-────────
+---
 
-▶️ Google Colab Demo
+# ▶️ Google Colab Demo
 
-1. Open the notebook.
-2. Runtime → Run all.
-3. Execute every cell.
-4. Download:
-  • soc_events.jsonl
-  • soc_checkpoints.sqlite
+1. Upload the notebook to Google Colab.
+2. Click **Runtime → Run All**.
+3. Execute all notebook cells.
+4. Review generated logs and checkpoints.
 
-────────
+---
 
-💻 Local Setup
+# 💻 Local Installation
 
 ```bash
 pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
-────────
+---
 
-🌐 API Example
+# 🌐 API Example
 
 ```bash
-curl -X POST http://127.0.0.1:8000/incidents/analyze
+POST /incidents/analyze
 ```
 
-────────
+---
 
-🔐 Security Features
+# 🔐 Security Features
 
-• Prompt Injection Detection
-• PII Masking
-• Output Validation
-• Safe Response Planning
-• Human Approval
-• Persistent Execution State
+- Prompt Injection Detection
+- PII Masking
+- Safe Action Validation
+- Human Approval
+- Persistent Checkpoints
+- JSON Audit Logs
 
-────────
+---
 
-👤 Human-in-the-Loop
+# 👤 Human-in-the-Loop
 
-Sensitive actions pause execution until approval or rejection is received before the workflow resumes.
+Sensitive response actions require manual approval before execution continues, ensuring secure decision-making and operational safety.
 
-────────
+---
 
-📊 Observability
+# 📊 Observability
 
-• JSONL Audit Logs
-• SQLite Checkpoints
-• Tool Calls
-• Retry Count
-• Approval Pauses
-• Execution Metrics
+The project records:
 
-────────
+- JSONL Audit Logs
+- SQLite Checkpoints
+- Workflow Events
+- Retry Statistics
+- Execution Metrics
 
-👥 Team
+---
 
-|Name                 |Email                    |
-|---------------------|-------------------------|
-|Wesal Fadhl Alnoamani|wesalfdhel1957@gmail.com |
-|Layan Omar Alomar    |layanomaralomar@gmail.com|
-|Rawan Hamad Alqahtani|rawan1hamad@hotmail.com  |
+# 👥 Team
 
-────────
+| Name | Email |
+|------|------|
+| Wesal Fadhl Alnoamani | wesalfdhel1957@gmail.com |
+| Layan Omar Alomar | layanomaralomar@gmail.com |
+| Rawan Hamad Alqahtani | rawan1hamad@hotmail.com |
 
-🙏 Acknowledgment
+---
 
-Developed as the Capstone Project for the Advanced Agentic AI Systems Engineering program delivered through SDAIA Academy.
+# 🙏 Acknowledgment
 
-Special thanks to Eng. Mohammed Albeladi for his guidance and support throughout the program.
+This project was developed as the Capstone Project for the **Advanced Agentic AI Systems Engineering** program delivered through **SDAIA Academy**.
+
+Special thanks to **Eng. Mohammed Albeladi** for his guidance and support throughout the program.
+
+GitHub:
+https://github.com/SDAIAAcademy
+
+---
+
+<div align="center">
+
+**AI SOC Commander © 2026**
+
+Built for the Advanced Agentic AI Systems Engineering Program
+
+</div>

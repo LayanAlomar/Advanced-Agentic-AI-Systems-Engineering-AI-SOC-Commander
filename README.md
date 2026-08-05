@@ -5,7 +5,7 @@ AI SOC Commander is an enterprise-style Agentic AI capstone project that receive
 
 The project was completed for the **Advanced Agentic AI Systems Engineering** training program delivered through **SDAIA Academy**.
 
-**Trainer:** Eng. Mohammed Albaladi  
+**Trainer:** Eng. Mohammed Albeladi  
 **SDAIA Academy GitHub:** https://github.com/SDAIAAcademy
 
 ---

@@ -1,0 +1,14 @@
+services:
+  ai-soc-commander:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      APP_ENV: production
+      LOG_PATH: /app/runtime/soc_events.jsonl
+      CHECKPOINT_DB: /app/runtime/soc_checkpoints.sqlite
+    volumes:
+      - soc-runtime:/app/runtime
+
+volumes:
+  soc-runtime:

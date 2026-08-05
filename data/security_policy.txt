@@ -1,0 +1,17 @@
+INCIDENT CLASSIFICATION POLICY
+Security incidents must be classified as Low, Medium, High, or Critical using available evidence and documented impact. High and Critical incidents must be escalated to the designated incident commander.
+
+EVIDENCE PRESERVATION POLICY
+Relevant authentication, endpoint, network, and cloud logs must be preserved before destructive remediation. Evidence must be stored in read-only or access-controlled storage with timestamps.
+
+ACCESS AND CREDENTIAL POLICY
+Compromised credentials may be reset and active sessions revoked. Disabling an account requires analyst approval when the action may interrupt a business-critical service.
+
+CONTAINMENT POLICY
+A confirmed compromised endpoint may be isolated from the production network. Isolation of a production asset is a high-sensitivity action and requires human approval.
+
+DATA PROTECTION POLICY
+Personally identifiable information must be minimized and masked in reports. National identifiers, phone numbers, payment-card details, and personal email addresses must not appear in broad incident communications.
+
+COMMUNICATION POLICY
+Critical incidents require notification to the incident commander and, where applicable, privacy, legal, executive, and business-continuity stakeholders.

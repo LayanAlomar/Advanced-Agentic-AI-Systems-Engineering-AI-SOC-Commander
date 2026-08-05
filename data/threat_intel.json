@@ -1,0 +1,22 @@
+{
+  "phishing": {
+    "name": "Phishing",
+    "severity": 60,
+    "recommended_control": "revoke sessions and reset affected credentials"
+  },
+  "malware": {
+    "name": "Malware",
+    "severity": 80,
+    "recommended_control": "isolate confirmed endpoint and preserve forensic evidence"
+  },
+  "data_exfiltration": {
+    "name": "Potential Data Exfiltration",
+    "severity": 90,
+    "recommended_control": "restrict egress and investigate destination"
+  },
+  "credential_attack": {
+    "name": "Credential Attack",
+    "severity": 70,
+    "recommended_control": "increase authentication monitoring and revoke compromised sessions"
+  }
+}

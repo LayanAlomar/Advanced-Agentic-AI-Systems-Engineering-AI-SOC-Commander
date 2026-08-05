@@ -1,22 +1,34 @@
+<div align="center">
+
 🛡️ AI SOC Commander
 
 Secure Multi-Agent Cybersecurity Incident Response System
 
 Capstone Project — Advanced Agentic AI Systems Engineering
 
-Built with LangGraph • FastAPI • SQLite • Docker • Google Colab
+Python
+LangGraph
+FastAPI
+Docker
+SQLite
+Google Colab
+
+Enterprise-style Multi-Agent SOC workflow built with LangGraph, FastAPI, SQLite, Docker, and Google Colab.
+
+</div>
 
 ────────
 
 📑 Table of Contents
 
 • About
-• Features
+• Key Features
 • Architecture
 • Multi-Agent Workflow
+• Agent Responsibilities
 • Technologies
 • Repository Structure
-• Google Colab
+• Google Colab Demo
 • Local Setup
 • API Example
 • Security Features
@@ -29,36 +41,76 @@ Built with LangGraph • FastAPI • SQLite • Docker • Google Colab
 
 🚀 About
 
-AI SOC Commander is an enterprise-style multi-agent cybersecurity incident response system developed as the capstone project for the Advanced Agentic AI Systems Engineering program.
+AI SOC Commander is a secure enterprise-style multi-agent cybersecurity incident response system developed as the Capstone Project for the Advanced Agentic AI Systems Engineering program.
+
+The workflow analyzes incidents, evaluates risk, retrieves organizational security policies, generates response plans, applies security guardrails, requests human approval for sensitive actions, and produces an auditable security report.
+
+Program: Advanced Agentic AI Systems Engineering
+
+Delivered by: SDAIA Academy
 
 Trainer: Eng. Mohammed Albladi
 
-SDAIA Academy: https://github.com/SDAIAAcademy
+SDAIA Academy GitHub:
+https://github.com/SDAIAAcademy
 
 ────────
 
-✨ Features
+✨ Key Features
 
-• LangGraph StateGraph
-• Multi-Agent Workflow
-• Shared State
-• Conditional Routing
-• Reviewer Retry Loop
-• Human-in-the-Loop
-• SQLite Persistence
-• Prompt Injection Protection
-• PII Masking
-• Output Validation
-• JSON Audit Logs
-• FastAPI
-• Docker
-• Google Colab
+• LangGraph StateGraph orchestration
+• Multi-Agent architecture
+• Shared workflow state
+• Conditional routing
+• Reviewer retry loop
+• Human-in-the-loop approval
+• SQLite checkpoint persistence
+• Prompt Injection protection
+• PII masking
+• Output validation
+• JSONL audit logs
+• FastAPI REST API
+• Docker deployment
+• Google Colab notebook
 
 ────────
 
 🏗️ Architecture
 
-User → Guardrail → Coordinator → Threat Analyzer → Risk Assessment → Policy Agent → Response Planner → Security Reviewer → Human Approval → Final Report
+```text
+User
+ │
+ ▼
+Input Guardrail
+ │
+ ▼
+Coordinator
+ │
+ ▼
+Threat Analyzer
+ │
+ ▼
+Risk Assessment
+ │
+ ▼
+Policy Agent
+ │
+ ▼
+Response Planner
+ │
+ ▼
+Security Reviewer
+ ├──── Revision Required ───► Planner
+ │
+ ▼
+Human Approval
+ │
+ ▼
+Final Report
+ │
+ ▼
+Audit Logs
+```
 
 ────────
 
@@ -73,6 +125,22 @@ User → Guardrail → Coordinator → Threat Analyzer → Risk Assessment → P
 • Security Reviewer
 • Human Approval
 • Final Report
+
+────────
+
+👨‍💻 Agent Responsibilities
+
+|Agent            |Responsibility                |
+|-----------------|------------------------------|
+|Input Guardrail  |Blocks malicious prompts      |
+|Coordinator      |Manages workflow              |
+|Threat Analyzer  |Parses security incidents     |
+|Risk Assessment  |Calculates severity           |
+|Policy Agent     |Retrieves security policies   |
+|Response Planner |Creates response plan         |
+|Security Reviewer|Reviews and requests revisions|
+|Human Approval   |Approves sensitive actions    |
+|Final Report     |Generates incident report     |
 
 ────────
 
@@ -99,18 +167,20 @@ AI_SOC_Commander/
 ├── requirements.txt
 ├── src/
 ├── docs/
-├── tests/
-└── data/
+├── data/
+└── tests/
 ```
 
 ────────
 
-▶️ Google Colab
+▶️ Google Colab Demo
 
-Run Runtime → Run all then review outputs and download:
-
-• soc_events.jsonl
-• soc_checkpoints.sqlite
+1. Open the notebook.
+2. Runtime → Run all.
+3. Execute every cell.
+4. Download:
+  • soc_events.jsonl
+  • soc_checkpoints.sqlite
 
 ────────
 
@@ -136,8 +206,15 @@ curl -X POST http://127.0.0.1:8000/incidents/analyze
 • Prompt Injection Detection
 • PII Masking
 • Output Validation
+• Safe Response Planning
 • Human Approval
-• Structured Logging
+• Persistent Execution State
+
+────────
+
+👤 Human-in-the-Loop
+
+Sensitive actions pause execution until approval or rejection is received before the workflow resumes.
 
 ────────
 
@@ -145,6 +222,9 @@ curl -X POST http://127.0.0.1:8000/incidents/analyze
 
 • JSONL Audit Logs
 • SQLite Checkpoints
+• Tool Calls
+• Retry Count
+• Approval Pauses
 • Execution Metrics
 
 ────────
@@ -163,4 +243,4 @@ curl -X POST http://127.0.0.1:8000/incidents/analyze
 
 Developed as the Capstone Project for the Advanced Agentic AI Systems Engineering program delivered through SDAIA Academy.
 
-Special thanks to Eng. Mohammed Albladi.
+Special thanks to Eng. Mohammed Albeladi for his guidance and support throughout the program.

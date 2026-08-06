@@ -35,27 +35,23 @@ def coordinator_agent(state: dict[str, Any]) -> dict[str, Any]:
     return {"plan": plan}
 
 def threat_analyzer_agent(state: dict[str, Any]) -> dict[str, Any]:
+    """Real LLM decision point using Gemini function calling."""
+    from .llm_agent import classify_threat_with_function_calling
+
     run_id = state["run_id"]
     metrics = _metrics(state)
-    indicators, latency1 = timed(run_id, "threat_analyzer.parse_security_logs", parse_security_logs, state["sanitized_input"])
-    intel, latency2 = timed(run_id, "threat_analyzer.lookup_threat_intelligence", lookup_threat_intelligence, indicators)
-    metrics["tool_calls"] += 2
-    metrics["latency_ms"] += latency1 + latency2
-
-    if indicators["contains_malware_terms"]:
-        threat_type = "Malware Infection"
-    elif indicators["outbound_mb"] >= 1024:
-        threat_type = "Potential Data Exfiltration"
-    elif indicators["contains_phishing_terms"]:
-        threat_type = "Phishing / Credential Theft"
-    elif indicators["failed_login_mentions"] or indicators["suspicious_countries"]:
-        threat_type = "Credential Attack"
-    else:
-        threat_type = "Suspicious Security Event"
-
-    indicators["threat_intelligence"] = intel
-    log_event(run_id, "threat_analyzer", "analysis_complete", threat_type=threat_type)
-    return {"indicators": indicators, "threat_type": threat_type, "metrics": metrics}
+    decision, llm_metadata = classify_threat_with_function_calling(state["sanitized_input"], run_id)
+    metrics["tool_calls"] += len(llm_metadata["tool_trace"])
+    metrics["llm_calls"] = metrics.get("llm_calls", 0) + llm_metadata["llm_calls"]
+    metrics["latency_ms"] += llm_metadata["latency_ms"]
+    return {
+        "indicators": decision.indicators,
+        "threat_type": decision.threat_type,
+        "llm_rationale": decision.rationale,
+        "llm_confidence": decision.confidence,
+        "llm_trace": llm_metadata,
+        "metrics": metrics,
+    }
 
 def risk_assessment_agent(state: dict[str, Any]) -> dict[str, Any]:
     indicators = state["indicators"]
@@ -152,6 +148,12 @@ def final_report_agent(state: dict[str, Any]) -> dict[str, Any]:
         "risk_level": state.get("risk_level", "LOW"),
         "risk_score": state.get("risk_score", 0),
         "evidence": state.get("indicators", {}),
+        "llm_reasoning": {
+            "rationale": state.get("llm_rationale", ""),
+            "confidence": state.get("llm_confidence", 0.0),
+            "model": state.get("llm_trace", {}).get("model", ""),
+            "tool_calls": state.get("llm_trace", {}).get("tool_trace", []),
+        },
         "policy_findings": [mask_pii(x) for x in state.get("policy_findings", [])],
         "recommended_actions": state.get("response_plan", []),
         "approval_status": state.get("approval_status", "NOT REQUIRED"),

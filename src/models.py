@@ -11,6 +11,9 @@ class SOCState(TypedDict, total=False):
     plan: list[str]
     indicators: dict[str, Any]
     threat_type: str
+    llm_rationale: str
+    llm_confidence: float
+    llm_trace: dict[str, Any]
     risk_level: RiskLevel
     risk_score: int
     policy_findings: list[str]

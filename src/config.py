@@ -6,5 +6,6 @@ class Settings:
     app_env: str = os.getenv("APP_ENV", "development")
     log_path: str = os.getenv("LOG_PATH", "soc_events.jsonl")
     checkpoint_db: str = os.getenv("CHECKPOINT_DB", "soc_checkpoints.sqlite")
+    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 settings = Settings()

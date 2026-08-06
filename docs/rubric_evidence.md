@@ -1,56 +1,25 @@
-# Rubric Evidence Map
+# Rubric Evidence Map — LLM Revision
 
-## 1. Agentic Reasoning & Tool Use — 15 points
-- Explicit pattern: Plan-and-Execute.
-- Short-term memory: `SOCState`.
-- Real tools:
-  - `parse_security_logs`
-  - `lookup_threat_intelligence`
-  - `search_security_policy`
-  - `safe_response_action`
-- Evidence cells in the Colab notebook show tool outputs.
+## Agentic Reasoning & Tool Use
+- Gemini `ChatGoogleGenerativeAI` is called in `src/llm_agent.py`.
+- Real tools are bound with `bind_tools()`.
+- Gemini selects and calls `parse_incident_evidence` and `correlate_threat_intelligence`.
+- Tool results are returned through `ToolMessage`.
+- A structured `ThreatDecision` contains classification, rationale, confidence, and indicators.
 
-## 2. Graph-Based Orchestration — 20 points
-- Framework: LangGraph `StateGraph`.
-- Conditional edges:
-  - input allowed vs blocked,
-  - reviewer pass vs revision,
-  - approval vs rejection.
-- Loop:
-  - `security_reviewer -> response_planner`.
-- Termination:
-  - reviewer passes or bounded revision count is reached.
+## Graph-Based Orchestration
+- Genuine LangGraph `StateGraph`, conditional branches, shared `SOCState`, and bounded reviewer loop.
 
-## 3. Multi-Agent System — 20 points
-Agents:
-1. Input Guardrail Agent
-2. Coordinator Agent
-3. Threat Analyzer Agent
-4. Risk Assessment Agent
-5. Policy Agent
-6. Response Planner Agent
-7. Security Reviewer Agent
-8. Human Approval Agent
-9. Final Report Agent
+## Multi-Agent System
+- Nine distinct agents coordinated using centralized hierarchical delegation and shared state.
 
-Coordination: centralized hierarchical delegation through shared state.
+## Security & Observability
+- Demonstrated injection blocking, PII masking, unsafe-action and output validation.
+- Structured logs capture LLM decisions, tool calls, latency, approval events, and retries.
 
-## 4. Security, Guardrails & Observability — 20 points
-- Prompt-injection attack is actually blocked.
-- PII masking is actually demonstrated.
-- Destructive actions are validated and blocked.
-- Structured JSONL monitoring captures node, event, latency, failure, and run ID.
-- Metrics capture tool calls, retries, blocked attacks, approval pauses, and latency.
+## Production Readiness
+- SQLite checkpointer, real interrupt/resume HITL, FastAPI, Dockerfile, docker-compose.
 
-## 5. Production Readiness — 20 points
-- Persistent SQLite checkpointer.
-- Real LangGraph interrupt and resume using `interrupt()` and `Command(resume=...)`.
-- FastAPI endpoint.
-- Dockerfile and docker-compose.
-- Restart-surviving state stored in SQLite.
-
-## 6. Documentation & Execution Evidence — 5 points
-- Professional README.
-- Architecture diagram.
-- Executed demonstration cells should be preserved after running in Colab.
-- Repository attribution to SDAIA Academy and trainer.
+## Required execution evidence
+- Run and save the Colab notebook with outputs.
+- Commit generated logs, summary, and screenshots in `evidence/`.

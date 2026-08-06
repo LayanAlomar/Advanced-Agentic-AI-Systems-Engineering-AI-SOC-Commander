@@ -1,13 +1,16 @@
-# Submission Checklist
+# Resubmission Checklist
 
-- [ ] Open the Colab notebook and click **Runtime → Run all**
+- [ ] Set `GOOGLE_API_KEY` only in the Colab runtime or local `.env`
+- [ ] Run the notebook top-to-bottom
+- [ ] Confirm Gemini made real function calls
 - [ ] Confirm the blocked prompt-injection output appears
-- [ ] Confirm the reviewer retry is visible in JSON logs
-- [ ] Confirm the approval interrupt appears
-- [ ] Resume once with approval and once with rejection
-- [ ] Confirm the persistent state proof succeeds
-- [ ] Keep all notebook outputs saved
-- [ ] Upload every project file to GitHub
-- [ ] Add incremental commits
-- [ ] Add screenshots to the repository
-- [ ] Never upload `.env` or API keys
+- [ ] Confirm the reviewer retry appears
+- [ ] Confirm the HITL pause and approved resume appear
+- [ ] Confirm the HITL rejected path appears
+- [ ] Confirm persistence after graph recreation
+- [ ] Save the notebook with execution counts and outputs
+- [ ] Add `soc_events.jsonl` and `execution_summary.json` to `evidence/`
+- [ ] Add screenshots to `evidence/screenshots/`
+- [ ] Commit fixes incrementally using meaningful messages
+- [ ] Verify README states August 2026 session dates
+- [ ] Never commit `.env` or API keys
